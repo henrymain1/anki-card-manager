@@ -1,0 +1,33 @@
+# Gradle
+.gradle/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+
+# Android Studio / IntelliJ
+.idea/
+*.iml
+local.properties
+captures/
+
+# Android
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+release/
+
+# Kotlin
+.kotlin/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local tooling / working notes (not part of the published project)
+.claude/settings.local.json
+CLAUDE.md
+Project_docs/

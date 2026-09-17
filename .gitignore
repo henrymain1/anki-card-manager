@@ -1,0 +1,45 @@
+# Root .gitignore for the anki-card-generator monorepo.
+# Each subproject (anki-card-manager-android/, anki-card-manager-proxy/) also
+# has its own .gitignore, which git still applies within that folder. The rules
+# here are defensive, cross-cutting, and belt-and-suspenders for anything that
+# must never reach a public repo.
+
+# --- Secrets & credentials (never commit) ---
+**/local.properties
+**/.env
+**/.env.local
+**/.env.*.local
+**/*.keystore
+**/*.jks
+**/*.p12
+**/*.pem
+**/*.key
+**/service-account*.json
+**/gcp-*.json
+**/google-services.json
+
+# --- Build output ---
+**/build/
+**/.gradle/
+**/.kotlin/
+**/node_modules/
+**/.vercel
+
+# --- IDE / tooling ---
+.idea/
+**/.idea/
+*.iml
+.vscode/
+**/.claude/
+.gradle/
+
+# --- Logs & crash dumps ---
+*.log
+**/*.log
+hs_err_pid*.log
+replay_pid*.log
+
+# --- OS cruft ---
+.DS_Store
+**/.DS_Store
+Thumbs.db

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Adaptive launcher icon foreground. 108×108 viewport, with the inner 72×72
+  ("safe zone", roughly 18..90) being what's guaranteed visible after masking.
+
+  Hand-drawn 中 (zhōng / zung1 — "middle / China") in white. Keeps the design
+  centered in the safe zone so no strokes get clipped on circular masks.
+
+  Stroke widths are intentionally chunky for visibility at small launcher sizes.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Outer rectangle (the 口 part) drawn as a frame using even-odd fill -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="
+            M30,38 H78 V70 H30 Z
+            M37,45 H71 V63 H37 Z" />
+
+    <!-- Vertical stroke through the middle -->
+    <path
+        android:fillColor="#FFFFFFFF"
+        android:pathData="M51,26 H57 V82 H51 Z" />
+</vector>

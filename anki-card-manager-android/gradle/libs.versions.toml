@@ -1,0 +1,79 @@
+[versions]
+# Bumped 8.5.2 → 8.7.3 because lifecycle 2.9.0 requires AGP 8.6.0+.
+# Going to the latest 8.7 patch (instead of just 8.6.1) for newer tooling
+# fixes; 8.7 needs Gradle 8.9, which the wrapper is already on.
+agp = "8.7.3"
+kotlin = "2.0.21"
+coreKtx = "1.13.1"
+# Bumped from 2.8.7 → 2.9.0 to align with the Compose 1.8 / BOM 2025.05.01 bump.
+# lifecycle-runtime-compose & lifecycle-viewmodel-compose need to ship a
+# Compose-1.8-aware runtime, otherwise the BOM bump silently downgrades the
+# Compose dependency back to 1.7.x.
+lifecycle = "2.9.0"
+# Bumped from 1.9.3 → 1.10.1 for the same reason — activity-compose pulls
+# Compose Runtime transitively and would otherwise pin it old.
+activityCompose = "1.10.1"
+# Bumped from 2024.10.01 (Compose 1.7.4) → 2025.05.01 (Compose 1.8.x).
+# Gives us `Modifier.animateBounds(LookaheadScope, ...)` and the newer
+# Material3 components/animations.
+composeBom = "2025.05.01"
+# Bumped from 2.8.4 → 2.8.9 — last 2.8.x patch, safe; staying out of
+# 2.9.x while it's still in beta.
+navigationCompose = "2.8.9"
+coroutines = "1.9.0"
+serialization = "1.7.3"
+retrofit = "2.11.0"
+okhttp = "4.12.0"
+coil = "2.7.0"
+datastore = "1.1.1"
+room = "2.6.1"
+ksp = "2.0.21-1.0.27"
+# SonarScanner for Gradle. 7.x needs Gradle 8.x + JDK 17+ — we're on
+# wrapper 8.9 and the Android Studio JBR (JDK 21), so no co-bumps needed.
+sonarqube = "7.4.0.8496"
+junit = "4.13.2"
+# kotlinx-coroutines-test ships in the same artifact group as the main
+# coroutines lib, version-matched. Keep aligned with `coroutines` above.
+mockwebserver = "4.12.0"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigationCompose" }
+androidx-datastore-preferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "datastore" }
+
+kotlinx-coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "serialization" }
+
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-kotlinx-serialization = { group = "com.squareup.retrofit2", name = "converter-kotlinx-serialization", version.ref = "retrofit" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okhttp-logging = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+
+coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
+
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+
+# Test-only
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
+okhttp-mockwebserver = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mockwebserver" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+compose-compiler = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+sonarqube = { id = "org.sonarqube", version.ref = "sonarqube" }

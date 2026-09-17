@@ -1,0 +1,10 @@
+{
+  "name": "anki-card-manager-proxy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Vercel Edge proxy for Gemini API + Google Translate TTS, used by the Anki Card Manager Android app.",
+  "type": "module",
+  "dependencies": {
+    "google-auth-library": "^10.7.0"
+  }
+}

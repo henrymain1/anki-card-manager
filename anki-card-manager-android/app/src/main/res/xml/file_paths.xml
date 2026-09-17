@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Cache subdirectory used to stage generated images before handing them
+         off to AnkiDroid via the FileProvider. -->
+    <cache-path name="generated_images" path="generated/" />
+</paths>
